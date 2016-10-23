@@ -60,11 +60,38 @@
 <a class="reference external image-reference" href="https://travis-ci.org/drafter250/treebudy"><img alt="https://img.shields.io/travis/drafter250/treebudy.svg" src="https://img.shields.io/travis/drafter250/treebudy.svg" /></a>
 <a class="reference external image-reference" href="https://treebudy.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/treebudy/badge/?version=latest" /></a>
 <a class="reference external image-reference" href="https://pyup.io/repos/github/drafter250/treebudy/"><img alt="Updates" src="https://pyup.io/repos/github/drafter250/treebudy/shield.svg" /></a>
-<p>a generic Elementtree-like Node object that keeps a reference to its parents.</p>
+<div class="section" id="what">
+<h2>What<a class="headerlink" href="#what" title="Permalink to this headline">¶</a></h2>
+<p>Treebudy Aims to offer two variations of The basic list(Sequence) and Dict(Mapping) types in
+Python. The Snode and the Mnode. The main difference from a normal List or dict
+is that they keep a reference to their parent container.</p>
+</div>
+<div class="section" id="why">
+<h2>Why<a class="headerlink" href="#why" title="Permalink to this headline">¶</a></h2>
+<p>My main Frustration with a number of libraries having to do with data serialization
+formats like xml, json &amp; yaml is that I always run into the problem that once
+I have searched through them to find the piece of data I need I sometimes need
+to also know where it is in the nested hierarchy of containers. The only object
+type I know of in the Standard Library that does this is the Node object in the
+xml mini-dom library. However the xml.etree.ElementTree API is much nicer to
+work with. The one thing it lacks is that parental reference. When it comes to
+Json and Yaml they simply get turned into lists and Dicts so no luck there.</p>
+<p>Of note the wideley used third party library [lxml](<a class="reference external" href="http://lxml.de/">http://lxml.de/</a> &#8220;lxml&#8221;) does
+provide a method to get the previous parent.</p>
+<p>My main use case for creating this library is that i want to be able to
+index a file directory tree in json or yaml look for a particular file
+and then create a path to the file by tracing back up through the tree.</p>
+<p>you would normaly have to come up with some fancy algorithym to do this. but being
+able to ask an element who it&#8217;s parent is much simpler.</p>
+</div>
+<div class="section" id="project-status">
+<h2>Project Status<a class="headerlink" href="#project-status" title="Permalink to this headline">¶</a></h2>
+<p>Just barely started - this is my first try at creating an open source project.</p>
 <ul class="simple">
 <li>Free software: BSD license</li>
-<li>Documentation: <a class="reference external" href="https://treebudy.readthedocs.io">https://treebudy.readthedocs.io</a>.</li>
+<li>Documentation: <a class="reference external" href="https://drafter250.github.io/treebudy/">https://drafter250.github.io/treebudy/</a></li>
 </ul>
+</div>
 <div class="section" id="features">
 <h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -86,6 +113,9 @@
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">treebudy</a><ul>
+<li><a class="reference internal" href="#what">What</a></li>
+<li><a class="reference internal" href="#why">Why</a></li>
+<li><a class="reference internal" href="#project-status">Project Status</a></li>
 <li><a class="reference internal" href="#features">Features</a></li>
 <li><a class="reference internal" href="#credits">Credits</a></li>
 </ul>
