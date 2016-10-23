@@ -18,11 +18,43 @@ treebudy
      :alt: Updates
 
 
-a generic Elementtree-like Node object that keeps a reference to its parents.
+What
+----
+
+Treebudy Aims to offer two variations of The basic list(Sequence) and Dict(Mapping) types in
+Python. The Snode and the Mnode. The main difference from a normal List or dict
+is that they keep a reference to their parent container.
+
+Why
+---
+
+My main Frustration with a number of libraries having to do with data serialization
+formats like xml, json & yaml is that I always run into the problem that once
+I have searched through them to find the piece of data I need I sometimes need
+to also know where it is in the nested hierarchy of containers. The only object
+type I know of in the Standard Library that does this is the Node object in the
+xml mini-dom library. However the xml.etree.ElementTree API is much nicer to
+work with. The one thing it lacks is that parental reference. When it comes to
+Json and Yaml they simply get turned into lists and Dicts so no luck there.
+
+Of note the wideley used third party library [lxml](http://lxml.de/ "lxml") does
+provide a method to get the previous parent.
+
+My main use case for creating this library is that i want to be able to
+index a file directory tree in json or yaml look for a particular file
+and then create a path to the file by tracing back up through the tree.
+
+you would normaly have to come up with some fancy algorithym to do this. but being
+able to ask an element who it's parent is much simpler.
+
+Project Status
+--------------
+
+Just barely started - this is my first try at creating an open source project.
 
 
 * Free software: BSD license
-* Documentation: https://treebudy.readthedocs.io.
+* Documentation: https://drafter250.github.io/treebudy/
 
 
 Features
@@ -37,4 +69,3 @@ This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypack
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
-
