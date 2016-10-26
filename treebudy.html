@@ -55,19 +55,43 @@
 <span id="treebudy-nodes-module"></span><h2>treebudy.nodes module<a class="headerlink" href="#module-treebudy.nodes" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="treebudy.nodes.Mnode">
-<em class="property">class </em><code class="descclassname">treebudy.nodes.</code><code class="descname">Mnode</code><span class="sig-paren">(</span><em>nodes=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treebudy/nodes.html#Mnode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treebudy.nodes.Mnode" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">treebudy.nodes.</code><code class="descname">Mnode</code><span class="sig-paren">(</span><em>nodes=None</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treebudy/nodes.html#Mnode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treebudy.nodes.Mnode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">collections.abc.MutableMapping</span></code></p>
 <p>A mapping elementtree-like Node/Element object that knows it&#8217;s parent</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>parent</strong> (<em>Mnode or Snode</em>) &#8211; </td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="treebudy.nodes.Mnode.parent">
+<code class="descname">parent</code><a class="headerlink" href="#treebudy.nodes.Mnode.parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="treebudy.nodes.Snode">
-<em class="property">class </em><code class="descclassname">treebudy.nodes.</code><code class="descname">Snode</code><span class="sig-paren">(</span><em>nodes=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treebudy/nodes.html#Snode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treebudy.nodes.Snode" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">treebudy.nodes.</code><code class="descname">Snode</code><span class="sig-paren">(</span><em>nodes=None</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treebudy/nodes.html#Snode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treebudy.nodes.Snode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">collections.abc.MutableSequence</span></code></p>
 <p>An elementtree-like Node/Element object that knows it&#8217;s parent</p>
+<dl class="classmethod">
+<dt id="treebudy.nodes.Snode.convert_seq">
+<em class="property">classmethod </em><code class="descname">convert_seq</code><span class="sig-paren">(</span><em>sequence</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treebudy/nodes.html#Snode.convert_seq"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treebudy.nodes.Snode.convert_seq" title="Permalink to this definition">¶</a></dt>
+<dd><p>converts a Sequence to a node</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="treebudy.nodes.Snode.insert">
 <code class="descname">insert</code><span class="sig-paren">(</span><em>index</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/treebudy/nodes.html#Snode.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#treebudy.nodes.Snode.insert" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="treebudy.nodes.Snode.parent">
+<code class="descname">parent</code><a class="headerlink" href="#treebudy.nodes.Snode.parent" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
