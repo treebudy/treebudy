@@ -83,6 +83,8 @@
 
     <span class="k">def</span> <span class="nf">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__children</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="p">(</span><span class="n">Snode</span><span class="p">,</span> <span class="n">Mnode</span><span class="p">)):</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span>
 
     <span class="k">def</span> <span class="nf">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">__children</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
@@ -91,7 +93,9 @@
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__children</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Snode.insert"><a class="viewcode-back" href="../../treebudy.html#treebudy.nodes.Snode.insert">[docs]</a>    <span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__children</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">node</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__children</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">node</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="p">(</span><span class="n">Snode</span><span class="p">,</span> <span class="n">Mnode</span><span class="p">)):</span>
+            <span class="n">node</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span></div>
 
     <span class="nd">@classmethod</span>
 <div class="viewcode-block" id="Snode.convert_seq"><a class="viewcode-back" href="../../treebudy.html#treebudy.nodes.Snode.convert_seq">[docs]</a>    <span class="k">def</span> <span class="nf">convert_seq</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">sequence</span><span class="p">):</span>

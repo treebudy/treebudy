@@ -76,12 +76,14 @@ type I know of in the Standard Library that does this is the Node object in the
 xml mini-dom library. However the xml.etree.ElementTree API is much nicer to
 work with. The one thing it lacks is that parental reference. When it comes to
 Json and Yaml they simply get turned into lists and Dicts so no luck there.</p>
-<p>Of note the wideley used third party library [lxml](<a class="reference external" href="http://lxml.de/">http://lxml.de/</a> &#8220;lxml&#8221;) does
-provide a method to get the previous parent.</p>
+<p>Of note the wildley popular third party library lxml provides an interface
+virtually identical to the elementree api as well as provide a method to get the
+previous parent element. However lxml is a C based library and the goal here is
+lightweight and zero dependencies and also it&#8217;s for xml not Json or yaml.</p>
 <p>My main use case for creating this library is that i want to be able to
-index a file directory tree in json or yaml look for a particular file
+index a file directory tree in json or yaml, look for a particular file
 and then create a path to the file by tracing back up through the tree.</p>
-<p>you would normaly have to come up with some fancy algorithym to do this. but being
+<p>You would normaly have to come up with some fancy algorithm to do this. but being
 able to ask an element who it&#8217;s parent is much simpler.</p>
 </div>
 <div class="section" id="project-status">
