@@ -37,14 +37,16 @@ xml mini-dom library. However the xml.etree.ElementTree API is much nicer to
 work with. The one thing it lacks is that parental reference. When it comes to
 Json and Yaml they simply get turned into lists and Dicts so no luck there.
 
-Of note the wideley used third party library [lxml](http://lxml.de/ "lxml") does
-provide a method to get the previous parent.
+Of note the wildley popular third party library lxml provides an interface
+virtually identical to the elementree api as well as provide a method to get the
+previous parent element. However lxml is a C based library and the goal here is
+lightweight and zero dependencies and also it's for xml not Json or yaml.
 
 My main use case for creating this library is that i want to be able to
-index a file directory tree in json or yaml look for a particular file
+index a file directory tree in json or yaml, look for a particular file
 and then create a path to the file by tracing back up through the tree.
 
-you would normaly have to come up with some fancy algorithym to do this. but being
+You would normaly have to come up with some fancy algorithm to do this. but being
 able to ask an element who it's parent is much simpler.
 
 Project Status

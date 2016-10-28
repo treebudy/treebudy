@@ -14,9 +14,11 @@ Contents:
    readme
    installation
    usage
+   treebudy
    contributing
    authors
    history
+
 
 Indices and tables
 ==================

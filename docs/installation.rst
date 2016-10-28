@@ -8,13 +8,18 @@ Installation
 Stable release
 --------------
 
+warning
+-------
+treebudy is not on pypi yet. the below text is boilerplate from cookiecutter-pypackage.
+
+
 To install treebudy, run this command in your terminal:
 
 .. code-block:: console
 
     $ pip install treebudy
 
-This is the preferred method to install treebudy, as it will always install the most recent stable release. 
+This is the preferred method to install treebudy, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.

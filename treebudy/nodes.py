@@ -32,6 +32,8 @@ class Snode(MutableSequence):
 
     def __setitem__(self, index, node):
         self.__children[index] = node
+        if isinstance(node, (Snode, Mnode)):
+            node.parent = self
 
     def __delitem__(self, index):
         del self.__children[index]
@@ -40,7 +42,9 @@ class Snode(MutableSequence):
         return len(self.__children)
 
     def insert(self, index, node):
-        self.__children[index] = node
+        self.__children.insert(index, node)
+        if isinstance(node, (Snode, Mnode)):
+            node.parent = self
 
     @classmethod
     def convert_seq(cls, sequence):
