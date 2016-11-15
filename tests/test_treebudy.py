@@ -66,3 +66,12 @@ def test_Mnode_init_with_flat_dict():
     assert 'cheese'in mnode
     assert mnode['FOO'] == 'bar'
     assert mnode['cheese'] == 'limburger'
+
+
+def test_Mnode_one_level_deep():
+    mnode = Mnode({'FOO': 'bar', 'cheese': 'limburger'})
+    mnodeb = Mnode({'fart': 'direction'})
+    mnode['child1'] = mnodeb
+    assert mnodeb.parent is mnode
+    assert 'child1' in mnode
+    assert mnode['child1'] is mnodeb
