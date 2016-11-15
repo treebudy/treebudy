@@ -50,3 +50,19 @@ def test_Snode_one_level_deep():
     assert slist1 in slist0
     assert slist1.parent is slist0
     print(slist1)
+
+
+def test_nested_Snode_instantiation():
+    stree = Snode([1, 2, 3, [4, 5, 6], [7, 8, [9, 10]]])
+    assert isinstance(stree[3], Snode)
+    assert isinstance(stree[4], Snode)
+    assert isinstance(stree[4][2], Snode)
+
+
+def test_Mnode_init_with_flat_dict():
+    mnode = Mnode({'FOO': 'bar', 'cheese': 'limburger'})
+    assert isinstance(mnode, Mnode)
+    assert 'FOO' in mnode
+    assert 'cheese'in mnode
+    assert mnode['FOO'] == 'bar'
+    assert mnode['cheese'] == 'limburger'

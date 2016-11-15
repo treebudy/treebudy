@@ -5,13 +5,19 @@ from collections import OrderedDict
 
 class Snode(MutableSequence):
     """An elementtree-like Node/Element object that knows it's parent"""
+
+    # this will allow easy subclassing to extend the container types that can
+    # be parsed
+    STYPES = (list, tuple)
+    MTYPES = (dict, OrderedDict)
+
     def __init__(self, nodes=None, parent=None):
         self.__children = list()
         self._parent = None
         self.parent = parent
 
         if nodes:
-            self.__children.extend(nodes)
+            self.extend(nodes)
 
     @property
     def parent(self):
@@ -31,9 +37,14 @@ class Snode(MutableSequence):
         return self.__children[index]
 
     def __setitem__(self, index, node):
-        self.__children[index] = node
+
         if isinstance(node, (Snode, Mnode)):
             node.parent = self
+            self.__children[index] = node
+        elif isinstance(node, self.STYPES):
+            self.__children[index] = Snode(node, parent=self)
+        else:
+            self.__children[index] = node
 
     def __delitem__(self, index):
         del self.__children[index]
@@ -42,14 +53,18 @@ class Snode(MutableSequence):
         return len(self.__children)
 
     def insert(self, index, node):
-        self.__children.insert(index, node)
+        """insert something as a child of this node. If that something derives
+        from MutableSequence it will be converted into an Snode
+
+        """
+
         if isinstance(node, (Snode, Mnode)):
             node.parent = self
-
-    @classmethod
-    def convert_seq(cls, sequence):
-        """converts a Sequence to a node"""
-        pass
+            self.__children.insert(index, node)
+        elif isinstance(node, self.STYPES):
+            self.__children.insert(index, Snode(node, parent=self))
+        else:
+            self.__children.insert(index, node)
 
 
 class Mnode(MutableMapping):
@@ -60,7 +75,8 @@ class Mnode(MutableMapping):
     parent: Mnode or Snode
 
     """
-
+    STYPES = (list, tuple)
+    MTYPES = (dict, OrderedDict)
     def __init__(self, nodes=None, parent=None):
         self.__children = OrderedDict()
         self._parent = None
