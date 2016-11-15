@@ -77,6 +77,7 @@ class Mnode(MutableMapping):
     """
     STYPES = (list, tuple)
     MTYPES = (dict, OrderedDict)
+
     def __init__(self, nodes=None, parent=None):
         self.__children = OrderedDict()
         self._parent = None
@@ -105,7 +106,13 @@ class Mnode(MutableMapping):
         return self.__children[key]
 
     def __setitem__(self, key, node):
-        self.__children[key] = node
+        if isinstance(node, (Mnode, Snode)):
+            node.parent = self
+            self.__children[key] = node
+        elif isinstance(node, self.MTYPES):
+            self.__children[key] = Mnode(node, parent=self)
+        else:
+            self.__children[key] = node
 
     def __delitem__(self, key):
         del self.__children[key]
