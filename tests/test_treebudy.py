@@ -88,3 +88,18 @@ def test_nested_Mnode_instantiation():
     assert isinstance(mnode, Mnode)
     assert isinstance(mnode['taunter'], Mnode)
     assert mnode is mnode['taunter'].parent
+
+def test_nested_mixed_instantiation()
+    mnode = Mnode({'FOO': 'bar',
+                   'cheese': 'limburger',
+                   'taunter': {'fart': 'direction'},
+                   'knights': [1,2,3,4,5],
+                   'parrot':[7,8,9,{'dead':'quite'}]})
+    assert isinstance(mnode, Mnode)
+    assert isinstance(mnode['taunter'], Mnode)
+    assert mnode is mnode['taunter'].parent
+    assert isinstance(mnode['knights'], Snode)
+    assert mnode is mnode['knights'].parent
+    assert isinstance(mnode['parrot'][3], Mnode)
+    assert mnode is mnode['parrot'][3].parent
+
