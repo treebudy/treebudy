@@ -53,6 +53,7 @@ def test_Snode_one_level_deep():
 
 
 def test_nested_Snode_instantiation():
+
     stree = Snode([1, 2, 3, [4, 5, 6], [7, 8, [9, 10]]])
     assert isinstance(stree[3], Snode)
     assert isinstance(stree[4], Snode)
@@ -60,6 +61,7 @@ def test_nested_Snode_instantiation():
 
 
 def test_Mnode_init_with_flat_dict():
+
     mnode = Mnode({'FOO': 'bar', 'cheese': 'limburger'})
     assert isinstance(mnode, Mnode)
     assert 'FOO' in mnode
@@ -69,9 +71,20 @@ def test_Mnode_init_with_flat_dict():
 
 
 def test_Mnode_one_level_deep():
+
     mnode = Mnode({'FOO': 'bar', 'cheese': 'limburger'})
     mnodeb = Mnode({'fart': 'direction'})
     mnode['child1'] = mnodeb
     assert mnodeb.parent is mnode
     assert 'child1' in mnode
     assert mnode['child1'] is mnodeb
+
+def test_nested_Mnode_instantiation():
+
+    mnode = Mnode({'FOO': 'bar',
+                   'cheese': 'limburger',
+                   'taunter': {'fart': 'direction'}})
+    print(repr(mnode))
+    assert isinstance(mnode, Mnode)
+    assert isinstance(mnode['taunter'], Mnode)
+    assert mnode is mnode['taunter'].parent

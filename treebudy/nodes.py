@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from collections.abc import MutableSequence, MutableMapping
 from collections import OrderedDict
+from itertools import chain
 
 
 class Snode(MutableSequence):
@@ -81,8 +82,14 @@ class Mnode(MutableMapping):
     def __init__(self, nodes=None, parent=None):
         self.__children = OrderedDict()
         self._parent = None
+        if parent:
+            self.parent = parent
         if nodes:
-            self.__children.update(nodes)
+            self.update(nodes)
+
+    def __repr__(self):
+
+        return repr(self.__children)
 
     @property
     def parent(self):
@@ -111,6 +118,8 @@ class Mnode(MutableMapping):
             self.__children[key] = node
         elif isinstance(node, self.MTYPES):
             self.__children[key] = Mnode(node, parent=self)
+        elif isinstance(node, self.STYPES):
+            self.__children[key] = Snode(node, parent=self)
         else:
             self.__children[key] = node
 
@@ -119,3 +128,16 @@ class Mnode(MutableMapping):
 
     def __len__(self):
         return len(self.__children)
+
+    def update(self, mapping):
+        for key, node in mapping.items():
+            if isinstance(node, (Mnode, Snode)):
+                self[key] = node
+            elif isinstance(node, self.MTYPES):
+                print(type(self))
+                self.__children[key] = Mnode(node, parent=self)
+            elif isinstance(node, self.STYPES):
+                print(type(self))
+                self.__children[key] = Snode(node, parent=self)
+            else:
+                self[key] = node
