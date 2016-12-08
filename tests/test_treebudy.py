@@ -7,7 +7,10 @@ test_treebudy
 
 Tests for `treebudy` module.
 """
+import sys, os
 
+if __name__ == '__main__':
+    sys.path.insert(0, os.path.dirname(__file__).rsplit(os.path.sep)[0])
 import pytest
 
 
@@ -84,12 +87,11 @@ def test_nested_Mnode_instantiation():
     mnode = Mnode({'FOO': 'bar',
                    'cheese': 'limburger',
                    'taunter': {'fart': 'direction'}})
-    print(repr(mnode))
     assert isinstance(mnode, Mnode)
     assert isinstance(mnode['taunter'], Mnode)
     assert mnode is mnode['taunter'].parent
 
-def test_nested_mixed_instantiation()
+def test_nested_mixed_instantiation():
     mnode = Mnode({'FOO': 'bar',
                    'cheese': 'limburger',
                    'taunter': {'fart': 'direction'},
@@ -101,5 +103,5 @@ def test_nested_mixed_instantiation()
     assert isinstance(mnode['knights'], Snode)
     assert mnode is mnode['knights'].parent
     assert isinstance(mnode['parrot'][3], Mnode)
-    assert mnode is mnode['parrot'][3].parent
+    assert mnode['parrot'] is mnode['parrot'][3].parent
 

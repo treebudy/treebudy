@@ -42,6 +42,8 @@ class Snode(MutableSequence):
         if isinstance(node, (Snode, Mnode)):
             node.parent = self
             self.__children[index] = node
+        elif isinstance(node, self.MTYPES):
+            self.__children[index] = Mnode(node, parent=self)
         elif isinstance(node, self.STYPES):
             self.__children[index] = Snode(node, parent=self)
         else:
@@ -62,6 +64,8 @@ class Snode(MutableSequence):
         if isinstance(node, (Snode, Mnode)):
             node.parent = self
             self.__children.insert(index, node)
+        elif isinstance(node, self.MTYPES):
+            self.__children.insert(index, Mnode(node, parent=self))
         elif isinstance(node, self.STYPES):
             self.__children.insert(index, Snode(node, parent=self))
         else:
@@ -94,7 +98,6 @@ class Mnode(MutableMapping):
     @property
     def parent(self):
         return self._parent
-
     @parent.setter
     def parent(self, parent):
         if parent is None:
@@ -131,13 +134,4 @@ class Mnode(MutableMapping):
 
     def update(self, mapping):
         for key, node in mapping.items():
-            if isinstance(node, (Mnode, Snode)):
-                self[key] = node
-            elif isinstance(node, self.MTYPES):
-                print(type(self))
-                self.__children[key] = Mnode(node, parent=self)
-            elif isinstance(node, self.STYPES):
-                print(type(self))
-                self.__children[key] = Snode(node, parent=self)
-            else:
-                self[key] = node
+            self[key] = node
