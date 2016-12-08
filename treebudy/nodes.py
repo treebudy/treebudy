@@ -5,7 +5,7 @@ from itertools import chain
 
 
 class Snode(MutableSequence):
-    """An elementtree-like Node/Element object that knows it's parent"""
+    """A sequence object that knows it's parent"""
 
     # this will allow easy subclassing to extend the container types that can
     # be parsed
@@ -73,10 +73,11 @@ class Snode(MutableSequence):
 
 
 class Mnode(MutableMapping):
-    """A mapping elementtree-like Node/Element object that knows it's parent
+    """A mapping object that knows it's parent
 
     Parameters
     ----------
+    nodes : mapping
     parent: Mnode or Snode
 
     """
